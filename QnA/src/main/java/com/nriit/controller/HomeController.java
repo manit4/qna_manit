@@ -55,10 +55,10 @@ public class HomeController {
 //	}
 	
 	@PostMapping("/registerMe")
-	public String register(String uname, String password, String name, String email)  {
-		System.out.println("inside register()..."+uname+", "+password+", "+name+", "+email);
+	public String register(String uname, String password, String name, String email, String role)  {
+		System.out.println("inside register()..."+uname+", "+password+", "+name+", "+email+", "+role);
 		
-		User user = new User(uname, password, name, email);
+		User user = new User(uname, password, name, email, role);
 		
 		userRepository.saveUser(user);
 		

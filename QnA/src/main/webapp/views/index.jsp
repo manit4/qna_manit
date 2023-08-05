@@ -15,9 +15,9 @@
 Thanks for Registering with us
 	<h2 style="color: blue; margin-left: 400px">Welcome to NRIIT</h2>
 	<div style="margin-left: 500px; margin-right: 500px">
-	<form>
-	Username:<input type="text"><br><br>
-	Password:<input type="text"><br>
+	<form action="login" method="post">
+	Username:<input type="text" name="username"><br><br>
+	Password:<input type="text" name="password"><br>
 	<input type="submit" value="Login">
 	</form>
 	<a href="getRegistrationPage">New User?? Register Here!!</a>

@@ -6,16 +6,18 @@ public class User {
 	private String password;
 	private String name;
 	private String email;
+	private String role;
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(String username, String password, String name, String email) {
+	public User(String username, String password, String name, String email, String role) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.name = name;
 		this.email = email;
+		this.role = role;
 	}
 	public String getUsername() {
 		return username;
@@ -40,6 +42,12 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 }

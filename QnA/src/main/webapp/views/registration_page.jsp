@@ -14,7 +14,10 @@
 	Password: <input type="text" name="password"><br><br>
 	Complete Name:<input type="text" name="name"><br><br>
 	Email:<input type="text" name="email"><br><br>
-	<input type="submit" value="Register">
+	Choose Role:<br><br>
+	Admin:<input type="radio"  name="role" value="admin">
+	Student:<input type="radio" name="role" value="student"> 
+	<input type="submit" value="Register" >
 </form>
 </div>
 </body>
