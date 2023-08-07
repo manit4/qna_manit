@@ -19,6 +19,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.nriit.repository.UserRepository;
 import com.nriit.to.User;
 import com.nriit.to.User2;
+import com.nriit.util.FileUploadUtils;
 
 @Controller
 public class HomeController {
@@ -61,16 +62,36 @@ public class HomeController {
 //		return "index";
 //	}
 	
+//	@PostMapping("/registerMe")
+//	public String register(String uname, String password, String name, String email, String role)  {
+//		System.out.println("inside register()..."+uname+", "+password+", "+name+", "+email+", "+role);
+//		
+//		User user = new User(uname, password, name, email, role);
+//		
+//		userRepository.saveUser(user);
+//		
+//		return "index";
+//	}
+	
 	@PostMapping("/registerMe")
-	public String register(String uname, String password, String name, String email, String role)  {
+	public String register(String uname, String password, String name, String email, String role, @RequestParam("image") MultipartFile multipartFile) throws IOException  {
 		System.out.println("inside register()..."+uname+", "+password+", "+name+", "+email+", "+role);
 		
-		User user = new User(uname, password, name, email, role);
+		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 		
-		userRepository.saveUser(user);
+		User user = new User(name, password, name, email, role, fileName);
+      
+        System.out.println("File name is "+fileName);
+         
+        userRepository.saveUser(user);
+        
+        String uploadDir = "user-photos/";
+        System.out.println("3");
+        FileUploadUtils.saveFile(uploadDir, fileName, multipartFile);
 		
 		return "index";
 	}
+	
 	
 	@GetMapping("/uploadImage")
 	public String upload() {
@@ -83,31 +104,16 @@ public class HomeController {
 //            @RequestParam("image") MultipartFile multipartFile) throws IOException {
 //         
 //        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-//        user.setImagePath(fileName);
+//        user.setImageName(fileName);
+//        System.out.println("File name is "+fileName);
 //         
-//        User savedUser = repo.save(user);
-// 
-//        String uploadDir = "user-photos/" + savedUser.getId();
-// 
+//        userRepository.saveUser(user);
+//        System.out.println("2");
+//        String uploadDir = "user-photos/";
+//        System.out.println("3");
 //        saveFile(uploadDir, fileName, multipartFile);
-//         
+//         System.out.println("4");
 //        return new RedirectView("/users", true);
-//    }
-//	
-//	public static void saveFile(String uploadDir, String fileName,
-//            MultipartFile multipartFile) throws IOException {
-//        Path uploadPath = Paths.get(uploadDir);
-//         
-//        if (!Files.exists(uploadPath)) {
-//            Files.createDirectories(uploadPath);
-//        }
-//         
-//        try (InputStream inputStream = multipartFile.getInputStream()) {
-//            Path filePath = uploadPath.resolve(fileName);
-//            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-//        } catch (IOException ioe) {        
-//            throw new IOException("Could not save image file: " + fileName, ioe);
-//        }      
 //    }
 	
 	

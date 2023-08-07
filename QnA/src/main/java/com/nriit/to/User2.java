@@ -4,16 +4,16 @@ public class User2 {
 	
 	private String username;
 	private String password;
-	private String imagePath;
+	private String imageName;
 	
 	public User2() {
 	}
 	
-	public User2(String username, String password, String imagePath) {
+	public User2(String username, String password, String imageName) {
 		super();
 		this.username = username;
 		this.password = password;
-		this.imagePath = imagePath;
+		this.imageName = imageName;
 	}
 	
 	public String getUsername() {
@@ -28,10 +28,10 @@ public class User2 {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getImagePath() {
-		return imagePath;
+	public String getImageName() {
+		return imageName;
 	}
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
 	}
 }

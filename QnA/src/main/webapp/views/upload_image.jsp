@@ -7,12 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<Form action="" enctype="multipart/form-data">
+<Form action="users/save" enctype="multipart/form-data" method="post">
 
 Username:<input type="text"><br><br>
 Password:<input type="text"><br><br>
 <input type="file" name="image">
-
+<input type="submit">
 </Form>
 </body>
 </html>

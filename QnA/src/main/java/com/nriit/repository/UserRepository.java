@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.nriit.db.DBConnection;
 import com.nriit.to.User;
+import com.nriit.to.User2;
 
 @Repository
 public class UserRepository {
@@ -40,13 +41,14 @@ public class UserRepository {
 
 			Connection conn = DBConnection.getConnection();
 
-			PreparedStatement statement = conn.prepareStatement("insert into user values(?, ?, ?, ?, ?)");
+			PreparedStatement statement = conn.prepareStatement("insert into user values(?, ?, ?, ?, ?, ?)");
 
 			statement.setString(1, user.getUsername());
 			statement.setString(2, user.getPassword());
 			statement.setString(3, user.getName());
 			statement.setString(4, user.getEmail());
 			statement.setString(5, user.getRole());
+			statement.setString(6, user.getFileName());
 
 			statement.executeUpdate();
 		} catch (Exception e) {
@@ -87,6 +89,26 @@ public class UserRepository {
 			e.printStackTrace();
 		}
 		return user;
+	}
+	
+	public void saveUser(User2 user) {
+		
+		try {
+
+			Connection conn = DBConnection.getConnection();
+
+			PreparedStatement statement = conn.prepareStatement("insert into user2 values(?, ?, ?)");
+
+			statement.setString(1, user.getUsername());
+			statement.setString(2, user.getPassword());
+			statement.setString(3, user.getImageName());
+			
+
+			statement.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("inside catch of saveUser of UserRepository..");
+			e.printStackTrace();
+		}
 	}
 
 }
