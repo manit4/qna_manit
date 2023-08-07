@@ -63,4 +63,63 @@ public class QuesAndAnswerRepository {
 		
 	}
 
+	public QuesAndAns get(String questionId) {
+		
+		QuesAndAns quesAndAns = null;
+		
+		try {
+			
+			Connection conn = DBConnection.getConnection();
+			PreparedStatement preparedStatement = conn.prepareStatement("select * from question_answer where id = ?");
+			
+			preparedStatement.setString(1, questionId);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				
+				String qId = resultSet.getString(1);
+				String question = resultSet.getString(2);
+				String answer = resultSet.getString(3);
+				String category = resultSet.getString(4);
+				
+				quesAndAns = new QuesAndAns(qId, question, answer, category);
+			}
+		}catch (Exception e) {
+			System.out.println("inside catch of get()");
+			e.printStackTrace();
+		}
+		
+		return quesAndAns;
+	}
+	
+	public void update(String questionId, String question , String answer, String category) {
+		
+		try {
+			Connection conn = DBConnection.getConnection();
+			PreparedStatement preparedStatement = conn.prepareStatement("update question_answer set "
+					+ "question = ?, answer = ?, category = ? where id = ?");
+			
+			preparedStatement.setString(1, question);
+			preparedStatement.setString(2, answer);
+			preparedStatement.setString(3, category);
+			preparedStatement.setString(4, questionId);
+			
+			preparedStatement.executeUpdate();
+			
+		}catch (Exception e) {
+			System.out.println("Inside update of QuestionAndAnswer");
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
 }

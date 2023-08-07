@@ -21,8 +21,7 @@ Thanks for Registering with us
 	<input type="submit" value="Login">
 	</form>
 	<a href="getRegistrationPage">New User?? Register Here!!</a>
-	</div>
-	
+	</div><a href="uploadImage">Upload Image</a>	
 	
 </body>
 </html>
