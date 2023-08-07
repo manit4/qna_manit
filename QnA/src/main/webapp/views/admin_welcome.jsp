@@ -69,7 +69,7 @@ for(int i = 0; i < questions.size(); i++) {
 <td><%= questions.get(i).getAnswer()%></td>
 <td><%= questions.get(i).getCategory()%></td>
 <td><a href = "">Update</a></td>
-<td><a href = "">Delete</a></td>
+<td><a href = "/deleteQnA/<%= questions.get(i).getBookId()%>">Delete</a></td>
 </tr>
 
 <%} %>

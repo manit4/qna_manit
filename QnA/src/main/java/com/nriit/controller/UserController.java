@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.nriit.repository.BookRepository;
+import com.nriit.repository.QuesAndAnswerRepository;
 import com.nriit.repository.UserRepository;
 import com.nriit.to.QuesAndAns;
 import com.nriit.to.User;
@@ -18,6 +18,9 @@ public class UserController {
 	
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	QuesAndAnswerRepository  bookRepository;
 	
 //	@PostMapping("/login")
 //	public String login(String username, String password) throws SQLException {
@@ -51,7 +54,7 @@ public class UserController {
 		
 		if(user != null) {
 			
-			BookRepository  bookRepository = new BookRepository();
+			//BookRepository  bookRepository = new BookRepository();
 			List<QuesAndAns>  quesAndAns = bookRepository.getBooks();
 			
 			if(user.getRole().equals("admin")) {

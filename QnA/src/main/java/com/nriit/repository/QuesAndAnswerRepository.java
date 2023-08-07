@@ -13,7 +13,7 @@ import com.nriit.db.DBConnection;
 import com.nriit.to.QuesAndAns;
 
 @Repository
-public class BookRepository {
+public class QuesAndAnswerRepository {
 	
 	public List<QuesAndAns> getBooks() {
 		
@@ -43,6 +43,24 @@ public class BookRepository {
 		}
 		
 		return books;
+	}
+	
+	public void delete(String questionId) {
+		
+		try {
+			
+			Connection conn = DBConnection.getConnection();
+			PreparedStatement statement = conn.prepareStatement("delete from question_answer where id = ?");
+			
+			statement.setString(1, questionId);
+			statement.executeUpdate();
+			
+		}catch (Exception e) {
+			System.out.println("Inside catch of deleteQuestion...");
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 }
